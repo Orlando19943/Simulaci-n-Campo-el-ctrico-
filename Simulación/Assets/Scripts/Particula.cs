@@ -6,11 +6,12 @@ public class Particula : MonoBehaviour
 {
     private Transform tr;
     Rigidbody rb;
-    public float mass = 9.11e-31f;
-    public float charge = -1.6e-19f;
-    public float electricField = 525f;
-    public float velocity = 3f;
-    public float time = 1e+13f; //Hay que hacer muchas pruebas para saber que tiempo ponerle (reducir el tiempo de Unity no funciona)
+    public float Masa = 9.11e-31f;
+    public float Carga = -1.6e-19f;
+    public float CampoElectrico = 525f;
+    public float VelocidadX = 3f;
+    public float VelocidadY = 0f;
+    public float time = 1e+13f; //Este tiempo solo se utiliza para saber la trayectoria que tomará la particula ya que da problemas si se reduce el tiempo del programa
 
     // Start is called before the first frame update
     void Start()
@@ -22,16 +23,24 @@ public class Particula : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        tr.Translate(new Vector3(velocity * Time.deltaTime, 0));
+        tr.Translate(new Vector3(VelocidadX * Time.deltaTime, VelocidadY * Time.deltaTime));
     }
 
-    private void OnTriggerEnter(Collider other)
+    private void OnTriggerEnter(Collider other) 
     {
         if (other.gameObject.CompareTag("campo"))
         {
-            Physics.gravity = new Vector3 (0f,gravity(mass, charge, electricField, time),0f);
+            Physics.gravity = new Vector3 (0f,gravity(Masa, Carga, CampoElectrico, time),0f);
             rb.useGravity = true;
         }
+        else if (other.gameObject.CompareTag("noCampo"))
+        {
+            time = 1;
+            Physics.gravity = new Vector3(0f, gravity(Masa, Carga, CampoElectrico, time), 0f);
+            rb.useGravity = false;
+            Time.timeScale = 0f;
+        }
+
     }
 
     private float gravity(float m, float c, float E,float t)
