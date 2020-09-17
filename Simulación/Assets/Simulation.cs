@@ -14,6 +14,7 @@ public class Simulation : MonoBehaviour
     public Text charge;
     public Text field;
     public Text width;
+    public GameObject fieldSimulator;
     float xVelocity = 0;
     float yVelocity = 0;
     float acceleration = 0;
@@ -39,6 +40,8 @@ public class Simulation : MonoBehaviour
         CalculateVelocity(fVelocity, fangle);
         CalculateAcceleration(fmass, fcharge, ffield, delay);
 
+        fieldSimulator.transform.localScale = new Vector3(field_width, 18.97721f, 1);
+        fieldSimulator.transform.position = new Vector3((field_width / 2) - 7, 19.76f, -11.05421f);
 
         print(fcharge);
         print(fmass);
