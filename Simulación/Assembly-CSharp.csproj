@@ -64,7 +64,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Assets\Scripts\Particles.cs" />
-    <Compile Include="Assets\Scripts\Particula.cs" />
+    <Compile Include="Assets\Simulation.cs" />
     <Reference Include="Unity.Timeline.Editor">
       <HintPath>C:/Users/claudia/Desktop/ProyectoF3/Simulaci-n-Campo-el-ctrico-/Simulación/Library/ScriptAssemblies/Unity.Timeline.Editor.dll</HintPath>
     </Reference>

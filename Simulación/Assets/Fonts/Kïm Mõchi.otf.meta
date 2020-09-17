@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 5862fc7abcee35741978608d8a01ac64
+guid: f93e43577029c2042be4e925d20d0bd7
 TrueTypeFontImporter:
   externalObjects: {}
   serializedVersion: 4
@@ -8,9 +8,9 @@ TrueTypeFontImporter:
   characterSpacing: 0
   characterPadding: 1
   includeFontData: 1
-  fontName: Edo SZ
+  fontName: Kim Mochi
   fontNames:
-  - Edo SZ
+  - Kim Mochi
   fallbackFontReferences: []
   customCharacters: 
   fontRenderingMode: 0

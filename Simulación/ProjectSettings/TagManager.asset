@@ -6,6 +6,8 @@ TagManager:
   tags:
   - campo
   - noCampo
+  - field
+  - without_field
   layers:
   - Default
   - TransparentFX
