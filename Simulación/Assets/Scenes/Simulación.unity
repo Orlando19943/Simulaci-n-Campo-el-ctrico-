@@ -147,8 +147,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 110285608}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -5, y: 19.76, z: -11.054207}
-  m_LocalScale: {x: 4, y: 18.977211, z: 1}
+  m_LocalPosition: {x: -6, y: 19.76, z: -11.054207}
+  m_LocalScale: {x: 2, y: 18.977211, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 5
@@ -2243,6 +2243,7 @@ MonoBehaviour:
   charge: {fileID: 334903698}
   field: {fileID: 784752749}
   width: {fileID: 1592067967}
+  fieldSimulator: {fileID: 110285608}
 --- !u!54 &1278099257
 Rigidbody:
   m_ObjectHideFlags: 0
