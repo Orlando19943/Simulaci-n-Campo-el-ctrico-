@@ -28,7 +28,7 @@ public class Simulation : MonoBehaviour
     float time;
     float finalDistance;
     public int n = 1000;
-    RaycastHit hitInfo;
+    
 
     // Start is called before the first frame update
     void Start()
@@ -56,11 +56,11 @@ public class Simulation : MonoBehaviour
         fVelocity = Diana(fVelocity);
         CalculateVelocity(fVelocity, fangle);
         CalculateAcceleration(fmass, fcharge, ffield, delay);
-        CalculateTime(field_width, xVelocity);
-        CalculateFinalDistance(time);
-        CalculateDelay(finalDistance);
+        //CalculateTime(field_width, xVelocity);
+        //CalculateFinalDistance(time);
+        //CalculateDelay(finalDistance);
         Orlando(acceleration);
-        Last();
+        //Last();
         //print("Delay = "+ delay +"Velocidad X = " + xVelocity + "Velocidad Y = " + xVelocity + "Aceleracion = "+ acceleration);
         canvas.enabled = false;
         canvas2.enabled = true;
@@ -133,16 +133,8 @@ public class Simulation : MonoBehaviour
                 e /= 10;
             }
         }
-        else
-        {
-            while (e < 100)
-            {
-                n++;
-                e /= 10;
-            }
-        }
         delay = Mathf.Pow(10, n);
-        print("finalDistance = " + velocity);
+        print("velocidad = " + velocity);
         return delay * velocity;
     }
 
@@ -156,14 +148,6 @@ public class Simulation : MonoBehaviour
             {
                 n++;
                 e /= 10;
-            }
-        }
-        else if (e < 1e-1)
-        {
-            while (e < 1e-1)
-            {
-                n--;
-                e *= 10;
             }
         }
         print("n = " + n);
@@ -203,24 +187,11 @@ public class Simulation : MonoBehaviour
             rb.useGravity = false;
             //print(tr.localPosition.x);
         }
-        Ray myRay = Camera.main.ScreenPointToRay(Input.mousePosition);
-
         
-
-        if (Physics.Raycast(myRay, out hitInfo))
-        {
-
-            if (hitInfo.collider.gameObject.CompareTag("particle") & Physics.gravity.y != 1f)
-            {
-                
-            }
-                
-        }
             
 
 
-        
-
+     
     }
 
 
