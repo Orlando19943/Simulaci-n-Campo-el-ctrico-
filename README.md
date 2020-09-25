@@ -1,2 +1,4 @@
-# Simulaci-n-Campo-el-ctrico-
-Proyecto 1 de física 3 sobre una simulación de una partícula en presencia de un campo eléctrico (っ▀¯▀)つ
+# Simulacion de trayectoria de una particula cargada en presencia de campo electrico(っ▀¯▀)つ
+
+No sea estupido, usar la simulacion es facil
+
