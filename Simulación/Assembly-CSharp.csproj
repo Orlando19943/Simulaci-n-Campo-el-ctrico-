@@ -63,6 +63,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Assets\Scripts\Inicio.cs" />
     <Compile Include="Assets\Scripts\Particles.cs" />
     <Compile Include="Assets\Scripts\Simulation.cs" />
     <Reference Include="Unity.Timeline.Editor">

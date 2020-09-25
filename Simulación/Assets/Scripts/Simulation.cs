@@ -27,6 +27,7 @@ public class Simulation : MonoBehaviour
     float field_width = 0;
     float time;
     float finalDistance;
+    public int n = 1000;
     RaycastHit hitInfo;
 
     // Start is called before the first frame update
@@ -52,26 +53,29 @@ public class Simulation : MonoBehaviour
         float fmass = float.Parse(mass.text);
         float fcharge = float.Parse(charge.text);
         field_width = float.Parse(width.text);
+        fVelocity = Diana(fVelocity);
         CalculateVelocity(fVelocity, fangle);
         CalculateAcceleration(fmass, fcharge, ffield, delay);
         CalculateTime(field_width, xVelocity);
         CalculateFinalDistance(time);
         CalculateDelay(finalDistance);
+        Orlando(acceleration);
         Last();
-        print("Delay = "+ delay +"Velocidad X = " + xVelocity + "Velocidad Y = " + xVelocity + "Aceleracion = "+ acceleration);
+        //print("Delay = "+ delay +"Velocidad X = " + xVelocity + "Velocidad Y = " + xVelocity + "Aceleracion = "+ acceleration);
         canvas.enabled = false;
         canvas2.enabled = true;
         fieldSimulator.transform.localScale = new Vector3(field_width,fieldSimulator.transform.localScale.y);
-        fieldSimulator.transform.position = new Vector3((field_width / 2) - 7, 19.76f, -11.05421f);
+        fieldSimulator.transform.position = new Vector3((field_width / 2) - 70, 19.76f, -11.05421f);
         Physics.gravity = new Vector3(0f, acceleration, 0f);
         rb.useGravity = true;
+
         //fieldSimulator.transform.position = new Vector3((field_width / 2) - 7, tr.localPosition.y, -11.05421f);
 
         //print(fcharge);
         //print(fmass);
         //print(fVelocity);
         //print(yVelocity);
-        //print(acceleration);
+        print(acceleration);
     }
 
 
@@ -86,12 +90,12 @@ public class Simulation : MonoBehaviour
     private void CalculateTime (float distance, float velocityX)
     {
         time = distance / velocityX;
-        print("Time = " + time);
+        //print("Time = " + time);
     }
     private void CalculateFinalDistance(float time)
     {
         finalDistance = yVelocity * time+ 0.5f * acceleration * time * time;
-        print("finalDistance = " + finalDistance);
+        //print("finalDistance = " + finalDistance);
     }
 
     private void CalculateDelay(float distance)
@@ -100,29 +104,79 @@ public class Simulation : MonoBehaviour
         float finalDistance = Mathf.Abs(distance);
         if (finalDistance < 1)
         {
-            while (finalDistance < 100)
+            while (finalDistance < this.n)
             {
                 n--;
                 finalDistance *= 10;
             }
         }else
         {
-            while (finalDistance > 100)
+            while (finalDistance > this.n)
             {
                 n++;
                 finalDistance /= 10;
             }
         }
-        
         print("n = " + n);
         delay = Mathf.Pow(10, n);
     }
 
+    private float Diana(float velocity)
+    {
+        int n = 0;
+        float e = Mathf.Abs(velocity);
+        if (e > 100)
+        {
+            while (e > 100)
+            {
+                n--;
+                e /= 10;
+            }
+        }
+        else
+        {
+            while (e < 100)
+            {
+                n++;
+                e /= 10;
+            }
+        }
+        delay = Mathf.Pow(10, n);
+        print("finalDistance = " + velocity);
+        return delay * velocity;
+    }
+
+    private void Orlando(float velocity)
+    {
+        int n = 0;
+        float e = Mathf.Abs(velocity);
+        if (e > 1e-1)
+        {
+            while (e > 1e-1)
+            {
+                n++;
+                e /= 10;
+            }
+        }
+        else if (e < 1e-1)
+        {
+            while (e < 1e-1)
+            {
+                n--;
+                e *= 10;
+            }
+        }
+        print("n = " + n);
+        delay = Mathf.Pow(10, n);
+        acceleration = delay / acceleration;
+    }
+
     private void Last()
     {
-        yVelocity = yVelocity * delay;
-        xVelocity = xVelocity * delay;
-        acceleration = acceleration * delay;
+        delay = 1e-13f;
+        //yVelocity = yVelocity * delay;
+        //xVelocity = xVelocity * delay;
+        //acceleration = acceleration * delay;
     }
 
     private void CalculateAcceleration(float mass, float charge, float field, float delay)
@@ -137,17 +191,17 @@ public class Simulation : MonoBehaviour
         if (tr.position.x >= -70 && tr.position.x <= (field_width - 70))
         {
             //print(Time.deltaTime/delay);
-            fieldSimulator.transform.position = new Vector3((field_width / 2) - 7, tr.localPosition.y, -11.05421f);
+            //fieldSimulator.transform.position = new Vector3((field_width / 2) - 7, tr.localPosition.y, -11.05421f);
             //x_Axis.transform.position = new Vector3(tr.localPosition.x, x_Axis.transform.localPosition.y, -11.05421f);
             //print("prueba");
         }
         else if (tr.position.x > (field_width - 7))
         {
-            print(Time.deltaTime);
+            //print(Time.deltaTime);
             xVelocity = 0;
             yVelocity = 0;
             rb.useGravity = false;
-            print(tr.localPosition.x);
+            //print(tr.localPosition.x);
         }
         Ray myRay = Camera.main.ScreenPointToRay(Input.mousePosition);
 
@@ -158,7 +212,7 @@ public class Simulation : MonoBehaviour
 
             if (hitInfo.collider.gameObject.CompareTag("particle") & Physics.gravity.y != 1f)
             {
-                print("Funciona");
+                
             }
                 
         }
