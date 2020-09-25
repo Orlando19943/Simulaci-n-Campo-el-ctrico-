@@ -24,8 +24,8 @@ public class Particles : MonoBehaviour
 
     public void SelectedItemn(int index)
     {
-        mass.text = "Masa: " + particlesMass[index];
-        charge.text = "Carga: " + particleCarge[index];
+        mass.text =  particlesMass[index];
+        charge.text = particleCarge[index];
         particle.text = particles[index];
     }
 
