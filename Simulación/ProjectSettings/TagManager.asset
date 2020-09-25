@@ -8,6 +8,7 @@ TagManager:
   - noCampo
   - field
   - without_field
+  - particle
   layers:
   - Default
   - TransparentFX
