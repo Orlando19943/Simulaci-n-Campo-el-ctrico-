@@ -52,22 +52,25 @@ public class Simulation : MonoBehaviour
         float ffield = float.Parse(field.text);
         float fmass = float.Parse(mass.text);
         float fcharge = float.Parse(charge.text);
+        float Velocity = fVelocity;
+        CalculateVelocity(Velocity, fangle);
+        CalculateAcceleration(fmass, fcharge, ffield, delay);
         field_width = float.Parse(width.text);
+        CalculateTime(field_width, xVelocity);
+        print("Velocidad X = " + xVelocity + "Velocidad Y = " + xVelocity + "Aceleracion = " + acceleration);
+        CalculateFinalDistance(time);
         fVelocity = Diana(fVelocity);
         CalculateVelocity(fVelocity, fangle);
-        CalculateAcceleration(fmass, fcharge, ffield, delay);
-        //CalculateTime(field_width, xVelocity);
-        //CalculateFinalDistance(time);
         //CalculateDelay(finalDistance);
         Orlando(acceleration);
         //Last();
-        //print("Delay = "+ delay +"Velocidad X = " + xVelocity + "Velocidad Y = " + xVelocity + "Aceleracion = "+ acceleration);
         canvas.enabled = false;
         canvas2.enabled = true;
         fieldSimulator.transform.localScale = new Vector3(field_width,fieldSimulator.transform.localScale.y);
         fieldSimulator.transform.position = new Vector3((field_width / 2) - 70, 19.76f, -11.05421f);
         Physics.gravity = new Vector3(0f, acceleration, 0f);
         rb.useGravity = true;
+        fieldSimulator.GetComponent<MeshRenderer>().enabled = false;
 
         //fieldSimulator.transform.position = new Vector3((field_width / 2) - 7, tr.localPosition.y, -11.05421f);
 
@@ -75,7 +78,7 @@ public class Simulation : MonoBehaviour
         //print(fmass);
         //print(fVelocity);
         //print(yVelocity);
-        print(acceleration);
+        //print(acceleration);
     }
 
 
@@ -172,26 +175,34 @@ public class Simulation : MonoBehaviour
     private void Update()
     {
         tr.Translate(new Vector3(xVelocity * Time.fixedDeltaTime, (yVelocity * Time.fixedDeltaTime), 0f));
-        if (tr.position.x >= -70 && tr.position.x <= (field_width - 70))
+        if (tr.position.y > 70 || tr.position.y < -50)
         {
             //print(Time.deltaTime/delay);
             //fieldSimulator.transform.position = new Vector3((field_width / 2) - 7, tr.localPosition.y, -11.05421f);
             //x_Axis.transform.position = new Vector3(tr.localPosition.x, x_Axis.transform.localPosition.y, -11.05421f);
             //print("prueba");
+            //print(Time.deltaTime);
+            xVelocity = 0;
+            yVelocity = 0;
+            acceleration = 1;
+            rb.useGravity = false;
+            Time.timeScale = 0f;
+            //print(tr.localPosition.x);
         }
-        else if (tr.position.x > (field_width - 7))
+        /*else if (tr.position.x > (field_width - 70))
         {
             //print(Time.deltaTime);
             xVelocity = 0;
             yVelocity = 0;
             rb.useGravity = false;
             //print(tr.localPosition.x);
-        }
-        
-            
+        }*/
+       
 
 
-     
+
+
+
     }
 
 
