@@ -42,7 +42,7 @@ public class Simulation : MonoBehaviour
     public void Carga(string nivel)
     {
         Physics.gravity = new Vector3(0f, 1f, 0f);
-        SceneManager.LoadScene(nivel);
+        SceneManager.LoadScene(1);
     }
 
     public void Simulate()
