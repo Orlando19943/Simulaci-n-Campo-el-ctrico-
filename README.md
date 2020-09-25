@@ -51,7 +51,7 @@ Vesion 1.2_beta.
 _Los guerreros que hicieron este programa_
 
 * **Orlando Cabrera** 
-* **Diana Corado  **  
+* **Diana Corado**  
 
 
 ## Licencia 📄
