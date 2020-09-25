@@ -25,6 +25,7 @@ _Para la instalación o la ejecución de la simulación solo es necesario dar do
 * Para realizar la simulación, primero es necesario llenar los datos que se solicitan en la parte inferior del simulador (Seleccionar partícula a utilizar, velocidad inicial de la partícula (magnitud y dirección), Magnitud y dirección del campo eléctrico, así como el ancho del mismo).
 * Seguidamente, se da click en el boton simular, y automáticamente inicia la simulación de la trayectoria de la partícula seleccionada.
 * Para realizar una nueva simulación se presiona el botón de repetición, situado en la parte superior izquierda del simulador.
+* Para cerrar el programa, puede utilizar alt + F4
 
 
 ## Despliegue 📦
