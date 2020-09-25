@@ -8,6 +8,7 @@ public class Particles : MonoBehaviour
     public Dropdown dropdown;
     public Text mass;
     public Text charge;
+    public Text particle;
     List<string> particles = new List<string>()
     {"Particulas", "Electron", "Proton","Particual Alfa" ,"Nucleo de Deuterio", "Particula de Muon", "Nucleo de Berilio", "Nucleo de Oro", "Nucleo de Hierro","Nucleo de Litio" };
     List<string> particlesMass = new List<string>()
@@ -23,8 +24,9 @@ public class Particles : MonoBehaviour
 
     public void SelectedItemn(int index)
     {
-        mass.text = particlesMass[index];
-        charge.text = particleCarge[index];
+        mass.text = "Masa: " + particlesMass[index];
+        charge.text = "Carga: " + particleCarge[index];
+        particle.text = particles[index];
     }
 
 }
